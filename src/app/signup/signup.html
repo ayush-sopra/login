@@ -1,0 +1,36 @@
+<p>signup works!</p>
+
+<form [formGroup]="signUpForm" > <!--(ngSubmit) = "onSubmit()-->
+
+  <label>Full Name</label>
+    <input type="text" required formControlName="name">
+    <br>
+    @if (name.invalid &&  name.touched){
+        <p>Name should not be empty</p>
+    }
+
+  <label>Email</label>
+    <input type="email" required formControlName="email">
+    <br>
+    @if (email.invalid && email.touched) {
+        <p>Email is invalid</p>
+    }
+
+  <label>Password</label>
+    <input type="password" required formControlName="password">
+    <br>
+    @if (password.touched && password.invalid){
+        <p>Password is required to be minimum 12 characters long.</p>
+    }
+
+  <button type="button" (click) = "createUser()" >Create</button>
+
+
+</form>
+
+<h2>{{signUpForm.controls.name.value}}</h2>
+<h2>{{this.signUpForm.controls.email.value}}</h2>
+<h2>{{this.signUpForm.controls.password.value}}</h2>
+
+<!-- //property file (static file which iscompiled once)try to put error message into the property file to make this dynamic -->
+
